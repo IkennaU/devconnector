@@ -253,11 +253,18 @@ router.delete(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
-      User.findOneAndRemove({ _id: req.user.id }).then(() =>
-        res.json({ success: true })
-      );
-    });
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        // Get Remove Index
+        const removeIndex = profile.education
+          .map(item => item.id)
+          .indexOf(req.params.edu_id);
+        //splice out of array
+        profile.education.splice(removeIndex, 1);
+        //save
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
   }
 );
 module.exports = router;

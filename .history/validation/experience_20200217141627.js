@@ -1,21 +1,21 @@
 const Validator = require("validator");
 const isEmpty = require("./is-empty");
 
-module.exports = function validateExperienceInput(data) {
+module.exports = function validateLoginInput(data) {
   let errors = {};
 
   data.title = !isEmpty(data.title) ? data.title : "";
   data.company = !isEmpty(data.company) ? data.company : "";
   data.from = !isEmpty(data.from) ? data.from : "";
 
-  if (Validator.isEmpty(data.title)) {
-    errors.title = "Job Title field is Required...";
+  if (!Validator.isEmail(data.email)) {
+    errors.email = "Email is Invalid...";
   }
-  if (Validator.isEmpty(data.company)) {
-    errors.company = "Company Name Field is Required...";
+  if (Validator.isEmpty(data.email)) {
+    errors.email = "Email field is Required...";
   }
-  if (Validator.isEmpty(data.from)) {
-    errors.from = "From Date field is Required...";
+  if (Validator.isEmpty(data.password)) {
+    errors.password = "Password field is Required...";
   }
 
   return {

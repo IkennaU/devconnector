@@ -177,7 +177,7 @@ router.delete(
             .json({ noSuchComment: "Comment Does Not Exists..." });
         }
         // if comment does exists, Get Remove Index
-        const removeIndex = post.comments
+        const removeIndex = post.comment
           .map(item => item._id.toString())
           .indexOf(req.params.comment_id);
         // splice out of array

@@ -160,28 +160,21 @@ router.post(
 // @route DELETE api/posts/comment/:ID:comment_id
 // @description remove comment from POST
 // @access  Private
-router.delete(
-  "/comment/:id/:comment_id",
+router.post(
+  "/comment/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    
     Post.findById(req.params.id)
       .then(post => {
-        // check to see if comment exists
-        if (
-          post.comments.filter(
-            comment => comment._id.toString() === req.params.comment_id
-          ).length === 0
-        ) {
-          return res
-            .status(404)
-            .json({ noSuchComment: "Comment Does Not Exists..." });
-        }
-        // if comment does exists, Get Remove Index
-        const removeIndex = post.comments
-          .map(item => item._id.toString())
-          .indexOf(req.params.comment_id);
-        // splice out of array
-        post.comments.splice(removeIndex, 1);
+        const newComment = {
+          text: req.body.text,
+          name: req.body.name,
+          avatar: req.body.avatar,
+          user: req.user.id
+        };
+        // Add to comments array
+        post.comments.unshift(newComment);
         post.save().then(post => res.json(post));
       })
       .catch(err => res.status(404).json({ noPostFound: "No Post Found" }));
