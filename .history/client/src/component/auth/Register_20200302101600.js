@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import axios from "axios";
 
 class Register extends Component {
   constructor() {
@@ -26,14 +23,14 @@ class Register extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-    this.props.registerUser(newUser);
+    axios
+      .post("/api/users/register", newUser)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.res.data));
   }
   render() {
-    const { errors } = this.state;
-    const { user } = this.props.auth;
     return (
       <div className="register">
-        {user ? user.name : null}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -45,32 +42,23 @@ class Register extends Component {
                 <div className="form-group">
                   <input
                     type="text"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.name
-                    })}
+                    className="form-control form-control-lg"
                     placeholder="Name"
                     name="name"
                     value={this.state.name}
                     onChange={this.onChange.bind(this)}
+                    required
                   />
-                  {errors.name && (
-                    <div className="invalid-feedback">{errors.name}</div>
-                  )}
                 </div>
                 <div className="form-group">
                   <input
                     type="email"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.email
-                    })}
+                    className="form-control form-control-lg"
                     placeholder="Email Address"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange.bind(this)}
                   />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
-                  )}
                   <small className="form-text text-muted">
                     This site uses Gravatar so if you want a profile image, use
                     a Gravatar email
@@ -79,32 +67,22 @@ class Register extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
-                    })}
+                    className="form-control form-control-lg"
                     placeholder="Password"
                     name="password"
                     value={this.state.password}
                     onChange={this.onChange.bind(this)}
                   />
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password2}</div>
-                  )}
                 </div>
                 <div className="form-group">
                   <input
                     type="password"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password2
-                    })}
+                    className="form-control form-control-lg"
                     placeholder="Confirm Password"
                     name="password2"
                     value={this.state.password2}
                     onChange={this.onChange.bind(this)}
                   />
-                  {errors.password2 && (
-                    <div className="invalid-feedback">{errors.password2}</div>
-                  )}
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
@@ -115,10 +93,5 @@ class Register extends Component {
     );
   }
 }
-Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
-const mapStateToProps = state => ({ auth: state.auth });
 
-export default connect(mapStateToProps, { registerUser })(Register);
+export default Register;

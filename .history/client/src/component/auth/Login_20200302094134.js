@@ -18,7 +18,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(user);
+    console.log(newUser);
   }
   render() {
     return (
@@ -30,7 +30,7 @@ class Login extends Component {
               <p className="lead text-center">
                 Sign in to your DevConnector account
               </p>
-              <form onSubmit={this.onSubmit.bind(this)}>
+              <form action="dashboard.html">
                 <div className="form-group">
                   <input
                     type="email"

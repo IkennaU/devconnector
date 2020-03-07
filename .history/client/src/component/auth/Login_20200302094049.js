@@ -14,11 +14,13 @@ class Login extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    const user = {
+    const newUser = {
+      name: this.state.name,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      password2: this.state.password2
     };
-    console.log(user);
+    console.log(newUser);
   }
   render() {
     return (
@@ -30,7 +32,7 @@ class Login extends Component {
               <p className="lead text-center">
                 Sign in to your DevConnector account
               </p>
-              <form onSubmit={this.onSubmit.bind(this)}>
+              <form action="dashboard.html">
                 <div className="form-group">
                   <input
                     type="email"
