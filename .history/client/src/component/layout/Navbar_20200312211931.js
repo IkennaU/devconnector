@@ -8,7 +8,6 @@ import { clearCurrentProfile } from "../../actions/profileActions";
 class Navbar extends Component {
   onLogOutClick(e) {
     e.preventDefault();
-    this.props.clearCurrentProfile();
     this.props.logoutUser();
   }
   render() {
@@ -84,6 +83,4 @@ Navbar.propTypes = {
 };
 const mapStateToProps = state => ({ auth: state.auth });
 
-export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
-  Navbar
-);
+export default connect(mapStateToProps, { logoutUser })(Navbar);

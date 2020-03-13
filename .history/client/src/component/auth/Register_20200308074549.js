@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import classnames from "classnames";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
@@ -81,7 +82,7 @@ class Register extends Component {
                 <TextFieldGroup
                   placeholder="Confirm Password"
                   name="password2"
-                  type="password"
+                  type="password2"
                   value={this.state.password2}
                   onChange={this.onChange.bind(this)}
                   error={errors.password2}
