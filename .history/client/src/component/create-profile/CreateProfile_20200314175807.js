@@ -29,7 +29,7 @@ class CreateProfile extends Component {
       errors: {}
     };
   }
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -198,7 +198,6 @@ class CreateProfile extends Component {
                 />
                 <div className="mb-3">
                   <button
-                    type="button"
                     onClick={() => {
                       this.setState(prevState => ({
                         displaySocialInputs: !prevState.displaySocialInputs

@@ -198,7 +198,6 @@ class CreateProfile extends Component {
                 />
                 <div className="mb-3">
                   <button
-                    type="button"
                     onClick={() => {
                       this.setState(prevState => ({
                         displaySocialInputs: !prevState.displaySocialInputs
@@ -226,7 +225,7 @@ class CreateProfile extends Component {
 }
 CreateProfile.propTypes = {
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  error: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   profile: state.profile,
