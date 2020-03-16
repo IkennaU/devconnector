@@ -121,6 +121,9 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              <a href="dashboard.html" className="btn btn-light">
+                Go Back
+              </a>
               <h1 className="display-4 text-center">Create Your Profile</h1>
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
@@ -129,7 +132,6 @@ class CreateProfile extends Component {
               <form onSubmit={this.onSubmit.bind(this)}>
                 <TextFieldGroup
                   placeholder="* Profile handle"
-                  type="text"
                   name="handle"
                   value={this.state.handle}
                   onChange={this.onChange.bind(this)}
@@ -226,7 +228,6 @@ CreateProfile.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
-
 const mapStateToProps = state => ({
   profile: state.profile,
   errors: state.errors

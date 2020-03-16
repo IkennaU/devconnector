@@ -26,7 +26,7 @@ class CreateProfile extends Component {
       linkedin: "",
       youtube: "",
       instagram: "",
-      errors: {}
+      errors: ""
     };
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -129,7 +129,6 @@ class CreateProfile extends Component {
               <form onSubmit={this.onSubmit.bind(this)}>
                 <TextFieldGroup
                   placeholder="* Profile handle"
-                  type="text"
                   name="handle"
                   value={this.state.handle}
                   onChange={this.onChange.bind(this)}

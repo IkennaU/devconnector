@@ -29,8 +29,10 @@ router.get(
       .populate("user", ["name", "avatar"])
       .then(profile => {
         if (!profile) {
-          errors.noprofile = "There Is No Profile for This User...";
-          return res.status(404).json(errors);
+          errors.noprofile = "There Is No Profile for This User..."
+          return res
+            .status(404)
+            .json(errors);
         }
         res.json(profile);
       })
@@ -60,14 +62,13 @@ router.get("/all", (req, res) => {
 // @description GET Profile by Handle
 // @access  Public
 router.get("/handle/:handle", (req, res) => {
-  const errors = {};
-
   Profile.findOne({ handle: req.params.handle })
     .populate("user", ["name", "avatar"])
     .then(profile => {
       if (!profile) {
-        errors.noprofile = "There Is No Profile For This User...";
-        return res.status(404).json(errors);
+        return res
+          .status(404)
+          .json({ noprofile: "There Is No Profile For This User..." });
       }
       res.json(profile);
     })
@@ -141,8 +142,7 @@ router.post(
         // check if handle exists
         Profile.findOne({ handle: profileFields.handle }).then(profile => {
           if (profile) {
-            errors.handle = "That Handle Already Exists...";
-            res.status(400).json(errors);
+            res.status(400).json({ handle: "That Handle Already Exists..." });
           }
           new Profile(profileFields).save().then(profile => res.json(profile));
         });

@@ -129,7 +129,6 @@ class CreateProfile extends Component {
               <form onSubmit={this.onSubmit.bind(this)}>
                 <TextFieldGroup
                   placeholder="* Profile handle"
-                  type="text"
                   name="handle"
                   value={this.state.handle}
                   onChange={this.onChange.bind(this)}
@@ -224,9 +223,8 @@ class CreateProfile extends Component {
 }
 CreateProfile.propTypes = {
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  error: PropTypes.object.isRequired
 };
-
 const mapStateToProps = state => ({
   profile: state.profile,
   errors: state.errors

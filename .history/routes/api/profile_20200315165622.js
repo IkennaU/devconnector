@@ -104,7 +104,7 @@ router.post(
     const { errors, isValid } = validateProfileInput(req.body);
     // check validation
     if (!isValid) {
-      return res.status(400).json(errors);
+      return res.status(400).json({ errors });
     }
     // Get Fields
     const profileFields = {};
