@@ -29,7 +29,9 @@ class CreateProfile extends Component {
       errors: {}
     };
   }
-
+  UNSAFE_componentWillMount() {
+    this.props.getCurrentProfile();
+  }
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });

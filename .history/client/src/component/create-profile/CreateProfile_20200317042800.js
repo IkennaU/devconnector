@@ -28,8 +28,10 @@ class CreateProfile extends Component {
       instagram: "",
       errors: {}
     };
+    this.componentDidMount() {
+      this.props.getCurrentProfile()
+    }
   }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
