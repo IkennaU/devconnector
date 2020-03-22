@@ -6,7 +6,6 @@ import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import ProfileActions from "./ProfileActions";
 import Experience from "./Experience";
-import Education from "./Education";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -18,6 +17,7 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
+    const experience = profile.experience;
 
     let dashboardContent;
     if (profile === null || loading === 1) {
@@ -32,8 +32,7 @@ class Dashboard extends Component {
               <Link to={`/profile/${profile.handle}`}> {user.name}</Link>
             </p>
             <ProfileActions />
-            <Experience experience={profile.experience} />
-            <Education education={profile.education} />
+            <Experience experience />
             <div style={{ marginBottom: "60px" }} />
             <button
               onClick={this.onDeleteClick.bind(this)}

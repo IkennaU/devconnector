@@ -97,7 +97,7 @@ class CreateProfile extends Component {
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
+      linkedIn: this.state.linkedin,
       youtube: this.state.youtube,
       instagram: this.state.instagram
     };
@@ -130,7 +130,7 @@ class CreateProfile extends Component {
           />
           <InputGroup
             placeholder="LinkedIn Profile URL"
-            name="linkedin"
+            name="linkedIn"
             value={this.state.linkedin}
             onChange={this.onChange.bind(this)}
             error={errors.linkedin}

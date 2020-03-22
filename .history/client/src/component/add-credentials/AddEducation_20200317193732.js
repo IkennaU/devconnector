@@ -64,11 +64,11 @@ class AddEducation extends Component {
               <small className="d-block pb-3">* = required field</small>
               <form onSubmit={this.onSubmit.bind(this)}>
                 <TextFieldGroup
-                  placeholder="* School"
-                  name="school"
-                  value={this.state.school}
+                  placeholder="* Schools"
+                  name="schools"
+                  value={this.state.schools}
                   onChange={this.onChange.bind(this)}
-                  error={errors.school}
+                  error={errors.schools}
                 />
                 <TextFieldGroup
                   placeholder="* Degree or Certification"
@@ -78,7 +78,7 @@ class AddEducation extends Component {
                   error={errors.degree}
                 />
                 <TextFieldGroup
-                  placeholder="* Field of Study"
+                  placeholder="Field of Study"
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   onChange={this.onChange.bind(this)}
@@ -112,10 +112,10 @@ class AddEducation extends Component {
                     id="current"
                   />
                   <label className="form-check-label" htmlFor="current">
-                    Current
+                    Current Job
                   </label>
                 </div>
-                <TextAreaFieldGroup
+                <TextFieldGroup
                   placeholder="Program Description"
                   name="description"
                   value={this.state.description}

@@ -112,10 +112,10 @@ class AddEducation extends Component {
                     id="current"
                   />
                   <label className="form-check-label" htmlFor="current">
-                    Current
+                    Current Job
                   </label>
                 </div>
-                <TextAreaFieldGroup
+                <TextFieldGroup
                   placeholder="Program Description"
                   name="description"
                   value={this.state.description}

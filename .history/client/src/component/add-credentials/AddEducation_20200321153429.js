@@ -115,7 +115,7 @@ class AddEducation extends Component {
                     Current
                   </label>
                 </div>
-                <TextAreaFieldGroup
+                <TextFieldGroup
                   placeholder="Program Description"
                   name="description"
                   value={this.state.description}

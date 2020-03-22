@@ -130,7 +130,7 @@ class CreateProfile extends Component {
           />
           <InputGroup
             placeholder="LinkedIn Profile URL"
-            name="linkedin"
+            name="linkedIn"
             value={this.state.linkedin}
             onChange={this.onChange.bind(this)}
             error={errors.linkedin}
