@@ -18,7 +18,7 @@ import EditProfile from "./component/edit-profile/EditProfile";
 import AddExperience from "./component/add-credentials/AddExperience";
 import AddEducation from "./component/add-credentials/AddEducation";
 import Profiles from "./component/profiles/Profiles";
-import Profile from "./component/profile/Profile";
+import Profile from "./component/profiles/Profile";
 
 import "./App.css";
 
