@@ -22,7 +22,7 @@ class ProfileGithub extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (this.refs.myRef) {
+        if (this.ref.myRef) {
           this.setState({ repos: data });
         }
       })
@@ -30,7 +30,7 @@ class ProfileGithub extends Component {
   }
   render() {
     const { repos } = this.state;
-    var repoItems = repos.map((repo) => (
+    var repoItem = repos.map((repo) => (
       <div key={repo.id} className="card card-body mb-2">
         <div className="row">
           <div className="col-md-6">
@@ -59,7 +59,7 @@ class ProfileGithub extends Component {
       <div ref="myRef">
         <hr />
         <h3 className="mb-4">Latest Github Repos</h3>
-        {repoItems}
+        {repoItem}
       </div>
     );
   }

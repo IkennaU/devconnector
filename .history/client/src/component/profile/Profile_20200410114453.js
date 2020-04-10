@@ -15,7 +15,7 @@ class Profile extends Component {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
-  UNSAFE_componentWillReceiveProps(nextprops) {
+  componentWillReceiveProps(nextprops) {
     if (nextprops.profile.profile === null && this.props.profile.loading) {
       this.props.history.push("/not-found");
     }

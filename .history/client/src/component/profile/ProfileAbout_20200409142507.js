@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 import isEmpty from "../../validation/is-Empty";
 
 class ProfileAbout extends Component {
@@ -8,9 +8,9 @@ class ProfileAbout extends Component {
     // Get first Name
     const firstName = profile.user.name.trim().split(" ")[0];
     // skills List
-    const skills = profile.skills.map((skill, index) => (
+    const skills = profile.skills.map((skills, index) => (
       <div key={index} className="p-3">
-        <i className="fa fa-check" /> {skill}
+        <i className="fa fa-check" />
       </div>
     ));
     return (
@@ -25,7 +25,21 @@ class ProfileAbout extends Component {
             <h3 className="text-center text-info">Skill Set</h3>
             <div className="row">
               <div className="d-flex flex-wrap justify-content-center align-items-center">
-                {skills}
+                <div className="p-3">
+                  <i className="fa fa-check"></i> HTML
+                </div>
+                <div className="p-3">
+                  <i className="fa fa-check"></i> CSS
+                </div>
+                <div className="p-3">
+                  <i className="fa fa-check"></i> JavaScript
+                </div>
+                <div className="p-3">
+                  <i className="fa fa-check"></i> Python
+                </div>
+                <div className="p-3">
+                  <i className="fa fa-check"></i> C#
+                </div>
               </div>
             </div>
           </div>
@@ -34,6 +48,5 @@ class ProfileAbout extends Component {
     );
   }
 }
-ProfileAbout.propTypes = { profile: PropTypes.object.isRequired };
 
 export default ProfileAbout;

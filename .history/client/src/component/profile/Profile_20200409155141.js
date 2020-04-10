@@ -15,11 +15,6 @@ class Profile extends Component {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
-  UNSAFE_componentWillReceiveProps(nextprops) {
-    if (nextprops.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push("/not-found");
-    }
-  }
   render() {
     const { profile, loading } = this.props.profile;
     let profileContent;

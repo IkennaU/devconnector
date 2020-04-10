@@ -15,11 +15,6 @@ class Profile extends Component {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
-  UNSAFE_componentWillReceiveProps(nextprops) {
-    if (nextprops.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push("/not-found");
-    }
-  }
   render() {
     const { profile, loading } = this.props.profile;
     let profileContent;
@@ -37,15 +32,10 @@ class Profile extends Component {
             </div>
             <div className="col-md-6"></div>
           </div>
-          <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile} />
-          <ProfileCreds
-            education={profile.education}
-            experience={profile.experience}
-          />
-          {profile.githubusername ? (
-            <ProfileGithub username={profile.githubusername} />
-          ) : null}
+          <ProfileHeader profille={profile} />
+          <ProfileAbout />
+          <ProfileCreds />
+          <ProfileGithub />
         </div>
       );
     }
@@ -63,8 +53,8 @@ class Profile extends Component {
 
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
-  getProfileByHandle: PropTypes.func.isRequired,
+  getProfileByHandle: PropTypes.func.isRequired
 };
-const mapStateToProps = (state) => ({ profile: state.profile });
+const mapStateToProps = state => ({ profile: state.profile });
 
 export default connect(mapStateToProps, { getProfileByHandle })(Profile);

@@ -22,7 +22,7 @@ class ProfileGithub extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (this.refs.myRef) {
+        if (this.ref.myRef) {
           this.setState({ repos: data });
         }
       })

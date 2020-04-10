@@ -22,16 +22,14 @@ class ProfileGithub extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (this.refs.myRef) {
-          this.setState({ repos: data });
-        }
+        this.setState({ repos: data });
       })
       .catch((err) => console.log(err));
   }
   render() {
     const { repos } = this.state;
-    var repoItems = repos.map((repo) => (
-      <div key={repo.id} className="card card-body mb-2">
+    var reposItem = repos.map((repo) => (
+      <div key={repos.id} className="card card-body mb-2">
         <div className="row">
           <div className="col-md-6">
             <h4>
@@ -43,23 +41,23 @@ class ProfileGithub extends Component {
           </div>
           <div className="col-md-6">
             <span className="badge badge-info mr-1">
-              Stars:{repo.stargazers_count}
+              Stars:{repos.stargazers_count}
             </span>
             <span className="badge badge-secondary mr-1">
-              Watchers:{repo.watchers_count}
+              Watchers:{repos.watchers_count}
             </span>
             <span className="badge badge-success">
-              Forks:{repo.forks_count}
+              Forks:{repos.forks_count}
             </span>
           </div>
         </div>
       </div>
     ));
     return (
-      <div ref="myRef">
+      <div>
         <hr />
         <h3 className="mb-4">Latest Github Repos</h3>
-        {repoItems}
+        {reposItem}
       </div>
     );
   }

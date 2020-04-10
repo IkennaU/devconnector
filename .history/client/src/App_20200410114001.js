@@ -83,7 +83,7 @@ class App extends Component {
                   component={AddEducation}
                 />
               </Switch>
-              <Route exact path="/not-found" component={NotFound} />
+              <Route exact path="/not-found" component={Notfound} />
             </div>
             <Footer />
           </div>

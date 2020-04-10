@@ -22,9 +22,7 @@ class ProfileGithub extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (this.refs.myRef) {
-          this.setState({ repos: data });
-        }
+        this.setState({ repos: data });
       })
       .catch((err) => console.log(err));
   }
@@ -56,7 +54,7 @@ class ProfileGithub extends Component {
       </div>
     ));
     return (
-      <div ref="myRef">
+      <div>
         <hr />
         <h3 className="mb-4">Latest Github Repos</h3>
         {repoItems}
