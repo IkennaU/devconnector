@@ -4,7 +4,7 @@ import {
   ADD_POST,
   GET_ERRORS,
   GET_POSTS,
-  GET_POST,
+  GET_POST
   POST_LOADING,
   DELETE_POST,
 } from "./types";

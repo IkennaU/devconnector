@@ -82,7 +82,6 @@ class PostItem extends Component {
     );
   }
 }
-PostItem.defaultProps = { showActions: true };
 PostItem.propTypes = {
   deletePost: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,

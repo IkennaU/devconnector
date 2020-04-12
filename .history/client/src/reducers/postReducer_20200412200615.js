@@ -14,8 +14,6 @@ export default function (state = initialState, action) {
       return { ...state, loading: true };
     case GET_POSTS:
       return { ...state, posts: action.payload, loading: false };
-    case GET_POST:
-      return { ...state, post: action.payload, loading: false };
     case ADD_POST:
       return { ...state, posts: [action.payload, ...state.posts] };
     case DELETE_POST:

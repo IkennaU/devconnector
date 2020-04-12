@@ -3,9 +3,8 @@ import axios from "axios";
 import {
   ADD_POST,
   GET_ERRORS,
-  GET_POSTS,
-  GET_POST,
   POST_LOADING,
+  GET_POSTS,
   DELETE_POST,
 } from "./types";
 
@@ -30,23 +29,7 @@ export function getPosts() {
       .catch((err) => dispatch({ type: GET_POSTS, payload: null }));
   };
 }
-//  Get Post
-export function getPost(id) {
-  return function (dispatch) {
-    dispatch(setPostLoading());
-    axios
-      .get(`/api/posts/${id}`)
-      .then((res) => dispatch({ type: GET_POST, payload: res.data }))
-      .catch((err) => dispatch({ type: GET_POST, payload: null }));
-  };
-}
-// Delete Post
-export const deletePost = (id) => (dispatch) => {
-  axios
-    .delete(`/api/posts/${id}`)
-    .then((res) => dispatch({ type: DELETE_POST, payload: id }))
-    .catch((err) => dispatch({ type: GET_ERRORS, payload: err.response.data }));
-};
+
 // Add Like
 export function addLike(id) {
   return function (dispatch) {

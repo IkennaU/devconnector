@@ -73,7 +73,7 @@ router.delete(
         }
         post.remove().then(() => res.json({ success: true }));
       })
-      .catch((err) => res.status(404).json({ Post: "No Post Found" }));
+      .catch((err) => res.status(404).json({ okPost: "Nos Post Found" }));
   }
 );
 // @route DELETE api/posts/like/:ID
