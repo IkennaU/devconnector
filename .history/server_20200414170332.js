@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const path = require("path");
 // api
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
@@ -19,17 +21,22 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => console.log("mongoDB connected..."))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
-app.get("/", (req, res) => res.send("Hello World"));
+// Initialise Passport
+app.use(passport.initialize());
+// passport config
+require("./config/passport")(passport);
 
 // Use Routes
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
+
+// Server Static Assets if in production
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`server running on port ${port}`));
