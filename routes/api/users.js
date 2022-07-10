@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 // Load Input Validation
+const { body, validationResult } = require("express-validator");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User Model
@@ -23,9 +24,9 @@ router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 router.post(
   "/",
   [
-    check("name", "Name is required").not().isEmpty(),
-    check("email", "Please include a valid email").isEmail(),
-    check(
+    body("name", "Name is required").not().isEmpty(),
+    body("email", "Please include a valid email").isEmail(),
+    body(
       "password",
       "Please enter a password with 6 or more characters"
     ).isLength({ min: 6 }),
